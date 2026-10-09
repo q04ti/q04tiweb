@@ -51,15 +51,3 @@ no audio files were used at all. it is just pure javascript generating square wa
 3. cat: pet mochi a bunch of times.
 
 ---
-
-## run it locally
-
-open `index.html` in your browser or run:
-```bash
-python -m http.server 8000
-```
-then open `http://localhost:8000`.
-
----
-
-*built by q04ti.*
