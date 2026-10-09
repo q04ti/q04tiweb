@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cyber-dark">
+<html lang="en" data-theme="win95">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>q04ti's corner | idfk what this is</title>
-  
   <meta name="description" content="just my little messy corner on the web. made random stuff, projects, guestbook and retro desktop vibes. no bloated frameworks.">
   <meta name="author" content="q04ti">
   <meta property="og:title" content="q04ti's web corner">
@@ -79,11 +78,11 @@
     <aside class="desktop-sticker-shelf">
       <div class="shelf-title">
         <span>q04ti station</span>
-        <span style="color: var(--accent-pink);">v2.4</span>
+        <span class="shelf-ver">v2.4</span>
       </div>
 
       <div class="visitor-badge">
-        <span style="font-size: 11px; color: var(--text-muted);">RANDOS VISITED:</span>
+        <span class="visitor-label">RANDOS VISITED:</span>
         <div id="visitor-count-digits" class="visitor-count">
           <!-- Populated by JS -->
         </div>
@@ -100,16 +99,16 @@
          ======================================================== -->
 
     <!-- 1. About Me Window (Open by default) -->
-    <article id="win-about" class="os-window active-window" data-icon="📁" style="top: 36px; left: 130px; width: 560px;">
+    <article id="win-about" class="os-window active-window win-about" data-icon="📁">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">📁</span>
           <span class="window-title">About_Me.txt - Notepad</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize" title="Minimize">_</button>
-          <button class="window-btn btn-maximize" title="Maximize">□</button>
-          <button class="window-btn btn-close" title="Close">✕</button>
+          <button type="button" class="window-btn btn-minimize" title="Minimize">_</button>
+          <button type="button" class="window-btn btn-maximize" title="Maximize">□</button>
+          <button type="button" class="window-btn btn-close" title="Close">✕</button>
         </div>
       </header>
 
@@ -135,7 +134,7 @@
           <p>
             yo im q04ti. welcome to my tiny corner of the web. i got tired of every single portfolio looking like the exact same generic template with "Hi, I'm Alex 👋 Let's build something amazing together". where is the personality?
           </p>
-          <p style="margin-top: 8px;">
+          <p class="bio-p-spaced">
             so i built this retro desktop site from scratch. no react, no tailwind, no massive node_modules folder. just clean html, css, and vanilla javascript that runs fast.
           </p>
         </div>
@@ -158,29 +157,29 @@
           </ul>
         </div>
 
-        <div style="margin-top: 16px; display: flex; gap: 8px;">
-          <button class="btn-retro" onclick="window.windowManager.openWindow('win-projects')">🚀 Check Projects</button>
-          <button class="btn-retro" onclick="window.windowManager.openWindow('win-guestbook')">📝 Drop A Note</button>
+        <div class="btn-group-about">
+          <button type="button" class="btn-retro" onclick="window.windowManager.openWindow('win-projects')">🚀 Check Projects</button>
+          <button type="button" class="btn-retro" onclick="window.windowManager.openWindow('win-guestbook')">📝 Drop A Note</button>
         </div>
       </section>
     </article>
 
     <!-- 2. Projects Window -->
-    <article id="win-projects" class="os-window hidden" data-icon="🚀" style="top: 50px; left: 180px; width: 620px;">
+    <article id="win-projects" class="os-window hidden win-projects" data-icon="🚀">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🚀</span>
           <span class="window-title">Projects/ - File Explorer</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
       <section class="window-body">
-        <p style="margin-bottom: 14px; font-size: 13px; color: var(--text-muted);">
+        <p class="projects-intro">
           stuff i built because i was bored or thought it looked cool:
         </p>
 
@@ -215,7 +214,7 @@
               <span class="project-tag">Zero MP3s</span>
             </div>
             <div class="project-links">
-              <button class="btn-retro" onclick="window.windowManager.openWindow('win-music')">Play Tunes ↗</button>
+              <button type="button" class="btn-retro" onclick="window.windowManager.openWindow('win-music')">Play Tunes ↗</button>
             </div>
           </div>
 
@@ -232,7 +231,7 @@
               <span class="project-tag">No Bloat</span>
             </div>
             <div class="project-links">
-              <button class="btn-retro" onclick="window.windowManager.openWindow('win-terminal')">Open CLI ↗</button>
+              <button type="button" class="btn-retro" onclick="window.windowManager.openWindow('win-terminal')">Open CLI ↗</button>
             </div>
           </div>
 
@@ -249,7 +248,7 @@
               <span class="project-tag">Vibes</span>
             </div>
             <div class="project-links">
-              <button class="btn-retro" onclick="window.windowManager.openWindow('win-arcade')">Play Arcade ↗</button>
+              <button type="button" class="btn-retro" onclick="window.windowManager.openWindow('win-arcade')">Play Arcade ↗</button>
             </div>
           </div>
         </div>
@@ -257,16 +256,16 @@
     </article>
 
     <!-- 3. /now Window -->
-    <article id="win-now" class="os-window hidden" data-icon="🕒" style="top: 60px; left: 220px; width: 500px;">
+    <article id="win-now" class="os-window hidden win-now" data-icon="🕒">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🕒</span>
           <span class="window-title">Now.log - Current Status</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -305,16 +304,16 @@
     </article>
 
     <!-- 4. Guestbook Window -->
-    <article id="win-guestbook" class="os-window hidden" data-icon="📝" style="top: 70px; left: 160px; width: 660px;">
+    <article id="win-guestbook" class="os-window hidden win-guestbook" data-icon="📝">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">📝</span>
           <span class="window-title">Guestbook.exe - Say Sup!</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -322,8 +321,8 @@
         <div class="guestbook-layout">
           <!-- Form Pane -->
           <div class="guestbook-form-pane">
-            <h4 style="font-family: var(--font-pixel); font-size: 9px; color: var(--accent-pink);">SIGN THE BOARD</h4>
-            <p style="font-size: 12px; color: var(--text-muted);">
+            <h4 class="guest-form-heading">SIGN THE BOARD</h4>
+            <p class="guest-form-subtext">
               leave a note or say something silly. saves in your local browser so nobody can cancel u here lol.
             </p>
 
@@ -350,18 +349,18 @@
                 <textarea id="guest-msg" class="form-input" rows="3" placeholder="say hi or drop your fav game..." required maxlength="200"></textarea>
               </div>
 
-              <button type="submit" class="btn-retro" style="align-self: flex-start; margin-top: 4px;">
+              <button type="submit" class="btn-retro btn-stamp">
                 📌 Pin It!
               </button>
-              <div id="guest-status" style="font-family: var(--font-terminal); font-size: 14px; color: var(--accent-green);"></div>
+              <div id="guest-status" class="guest-status-text"></div>
             </form>
           </div>
 
           <!-- Feed Pane -->
           <div class="guestbook-feed-pane">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <span id="guestbook-count" style="font-family: var(--font-terminal); font-size: 15px; color: var(--accent-cyan);">3 notes</span>
-              <button id="guestbook-reset" class="btn-retro" style="font-size: 7px; padding: 3px 6px;">Reset</button>
+            <div class="guest-feed-header">
+              <span id="guestbook-count" class="guestbook-count-text">3 notes</span>
+              <button type="button" id="guestbook-reset" class="btn-retro btn-guest-reset">Reset</button>
             </div>
             <div id="guestbook-list">
               <!-- Populated by JS -->
@@ -372,16 +371,16 @@
     </article>
 
     <!-- 5. 88x31 Button Shelf Window -->
-    <article id="win-shelf" class="os-window hidden" data-icon="🗃️" style="top: 80px; left: 240px; width: 540px;">
+    <article id="win-shelf" class="os-window hidden win-shelf" data-icon="🗃️">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🗃️</span>
           <span class="window-title">88x31_Shelf.html - Pixel Badges</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -393,19 +392,19 @@
         <!-- q04ti's Button Spotlight -->
         <div class="my-button-spotlight">
           <div class="spotlight-top">
-            <strong style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-cyan);">MY BUTTON:</strong>
-            <img src="assets/q04ti-badge.svg" alt="q04ti web badge" class="pixel-btn-preview" width="88" height="31" />
+            <strong class="spotlight-label">MY BUTTON:</strong>
+            <img src="assets/q04ti-badge.svg" alt="q04ti web badge" class="pixel-btn-preview" width="88" height="31">
           </div>
-          <p style="font-size: 12px; color: var(--text-muted);">
+          <p class="spotlight-subtext">
             wanna link to me? click this to copy the embed html:
           </p>
-          <button id="btn-copy-88x31" class="btn-retro" style="align-self: flex-start;">
+          <button type="button" id="btn-copy-88x31" class="btn-retro btn-copy-action">
             📋 Copy Button Code
           </button>
         </div>
 
         <!-- Web Collection -->
-        <h4 style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-pink); margin-bottom: 8px;">
+        <h4 class="shelf-subheading">
           BUTTONS I STOLE FROM THE INTERNET
         </h4>
         <div class="buttons-collection">
@@ -422,22 +421,22 @@
     </article>
 
     <!-- 6. Lo-Fi Synthesizer Window -->
-    <article id="win-music" class="os-window hidden" data-icon="🎵" style="top: 90px; left: 190px; width: 440px;">
+    <article id="win-music" class="os-window hidden win-music" data-icon="🎵">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🎵</span>
           <span class="window-title">LoFi_Synth.exe - Beep Boop</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
       <section class="window-body">
         <div class="music-box">
-          <div style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-green);">
+          <div class="synth-title">
             CHIPTUNE SYNTH (PROCEED WITH CAUTION)
           </div>
 
@@ -457,34 +456,34 @@
             <div class="vis-bar"></div>
           </div>
 
-          <p style="font-size: 12px; color: var(--text-muted);">
+          <p class="synth-subtext">
             made with web audio api so its 0mb. no mp3s were harmed in the making of this track lol.
           </p>
 
           <div class="music-controls">
-            <select id="music-track-select" class="form-input" style="font-family: var(--font-pixel); font-size: 8px;">
+            <select id="music-track-select" class="form-input track-select-input">
               <option value="0">Track 1: Midnight Coffee (chill)</option>
               <option value="1">Track 2: Neon Dreamer (bouncy)</option>
               <option value="2">Track 3: 8-Bit Breeze (retro)</option>
             </select>
 
-            <button id="music-play-btn" class="btn-retro">▶ Play Tunes</button>
+            <button type="button" id="music-play-btn" class="btn-retro">▶ Play Tunes</button>
           </div>
         </div>
       </section>
     </article>
 
     <!-- 7. CyberCat Companion Window -->
-    <article id="win-pet" class="os-window hidden" data-icon="🐾" style="top: 100px; left: 260px; width: 380px;">
+    <article id="win-pet" class="os-window hidden win-pet" data-icon="🐾">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🐾</span>
           <span class="window-title">CyberCat.pet - Mochi</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -492,11 +491,9 @@
         <div class="pet-box">
           <div id="pet-container" class="pet-screen">
             <div id="pet-avatar">
-              <pre id="pet-sprite" class="pet-ascii">
-  /\_/\  
- ( o.o ) 
-  > ^ <  ~*
-              </pre>
+              <pre id="pet-sprite" class="pet-ascii">  /\_/\
+ ( o.o )
+  &gt; ^ &lt;  ~*</pre>
             </div>
           </div>
 
@@ -505,25 +502,25 @@
             <span id="pet-count">Petted: 0 times</span>
           </div>
 
-          <div style="display: flex; gap: 8px; margin-top: 4px;">
-            <button id="btn-pet" class="btn-retro">💖 Pet Mochi</button>
-            <button id="btn-feed" class="btn-retro">🐟 Give Fish</button>
+          <div class="pet-btn-group">
+            <button type="button" id="btn-pet" class="btn-retro">💖 Pet Mochi</button>
+            <button type="button" id="btn-feed" class="btn-retro">🐟 Give Fish</button>
           </div>
         </div>
       </section>
     </article>
 
     <!-- 8. Arcade Window -->
-    <article id="win-arcade" class="os-window hidden" data-icon="🕹️" style="top: 40px; left: 140px; width: 380px;">
+    <article id="win-arcade" class="os-window hidden win-arcade" data-icon="🕹️">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🕹️</span>
           <span class="window-title">Arcade_Mini - Brick Breaker</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -537,22 +534,22 @@
 
           <canvas id="arcade-canvas" width="320" height="280"></canvas>
 
-          <button id="btn-arcade-start" class="btn-retro" style="margin-top: 4px;">Start Game</button>
+          <button type="button" id="btn-arcade-start" class="btn-retro btn-arcade-start">Start Game</button>
         </div>
       </section>
     </article>
 
     <!-- 9. Interactive Terminal Window -->
-    <article id="win-terminal" class="os-window hidden" data-icon="💻" style="top: 75px; left: 200px; width: 560px;">
+    <article id="win-terminal" class="os-window hidden win-terminal" data-icon="💻">
       <header class="window-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">💻</span>
           <span class="window-title">Terminal.sh - bash</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-minimize">_</button>
-          <button class="window-btn btn-maximize">□</button>
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-minimize">_</button>
+          <button type="button" class="window-btn btn-maximize">□</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
@@ -562,34 +559,34 @@
         </div>
         <div class="terminal-input-row">
           <span class="term-input-prompt">guest@q04ti:~$</span>
-          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus />
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
         </div>
       </section>
     </article>
 
     <!-- 10. Konami Secret Unlocked Window -->
-    <article id="win-secret" class="os-window hidden" data-icon="🌟" style="top: 110px; left: 200px; width: 440px;">
-      <header class="window-titlebar" style="background: linear-gradient(90deg, #ff007f, #ffd700);">
+    <article id="win-secret" class="os-window hidden win-secret" data-icon="🌟">
+      <header class="window-titlebar secret-titlebar">
         <div class="titlebar-left">
           <span class="window-icon">🌟</span>
-          <span class="window-title" style="color: #fff;">SECRET UNLOCKED LOL</span>
+          <span class="window-title secret-title-text">SECRET UNLOCKED LOL</span>
         </div>
         <div class="window-controls">
-          <button class="window-btn btn-close">✕</button>
+          <button type="button" class="window-btn btn-close">✕</button>
         </div>
       </header>
 
-      <section class="window-body" style="text-align: center;">
-        <div style="font-size: 40px; margin-bottom: 8px;">👑</div>
-        <h3 style="font-family: var(--font-pixel); font-size: 11px; color: var(--accent-amber); margin-bottom: 8px;">
+      <section class="window-body secret-body">
+        <div class="secret-crown">👑</div>
+        <h3 class="secret-heading">
           BRO ACTUALLY TYPED THE KONAMI CODE
         </h3>
-        <p style="font-size: 13px; line-height: 1.5; color: var(--text-main);">
+        <p class="secret-text">
           no way u actually knew that:
           <br>
-          <code style="color: var(--accent-cyan); font-family: monospace;">↑ ↑ ↓ ↓ ← → ← → B A</code>
+          <code class="secret-code-hl">↑ ↑ ↓ ↓ ← → ← → B A</code>
         </p>
-        <p style="margin-top: 10px; font-size: 12px; color: var(--accent-green);">
+        <p class="secret-sub">
           ★ unlocked disco mode + 30 extra lives in the retro web ★
         </p>
       </section>
@@ -641,8 +638,8 @@
 
   <!-- Bottom Taskbar -->
   <footer id="taskbar">
-    <button id="start-btn" class="start-btn">
-      <span style="font-size: 14px;">👾</span>
+    <button type="button" id="start-btn" class="start-btn">
+      <span class="start-icon">👾</span>
       <span>q04ti</span>
     </button>
 
@@ -652,19 +649,17 @@
     <!-- System Tray -->
     <div class="taskbar-tray">
       <!-- Theme Switcher -->
-      <select id="theme-picker" class="form-input" style="font-size: 11px; padding: 2px 4px; height: 26px;" title="Desktop Theme">
-        <option value="cyber-dark">Cyber Dark</option>
+      <select id="theme-picker" class="form-input theme-select-input" title="Desktop Theme">
         <option value="win95">Windows 95</option>
-        <option value="amber-crt">Amber CRT</option>
         <option value="gameboy">GameBoy Mint</option>
         <option value="vaporwave">Vaporwave</option>
       </select>
 
       <!-- CRT Overlay toggle -->
-      <button id="crt-toggle-btn" class="tray-btn active" title="Toggle Scanlines">📺</button>
+      <button type="button" id="crt-toggle-btn" class="tray-btn active" title="Toggle Scanlines">📺</button>
 
       <!-- Audio Mute / Unmute -->
-      <button id="mute-toggle-btn" class="tray-btn" title="Toggle Sound">🔊</button>
+      <button type="button" id="mute-toggle-btn" class="tray-btn" title="Toggle Sound">🔊</button>
 
       <!-- Real-time Clock -->
       <div id="taskbar-clock" class="taskbar-clock">12:00</div>

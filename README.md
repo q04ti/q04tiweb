@@ -23,7 +23,7 @@ double click or tap the desktop icons:
 - CyberCat.pet: mochi the desk cat. you can pet him, feed him fish, and see his mood change.
 - Arcade_Mini: playable brick breaker canvas game with sound effects and high scores.
 - Terminal.sh: interactive terminal with commands like help, about, now, matrix, neofetch, fortune, and secret files.
-- themes & scanlines: switcher for cyber dark, win95, amber crt, gameboy green, and vaporwave themes, plus a crt scanline toggle.
+- themes & scanlines: switcher for win95, gameboy green, and vaporwave themes, plus a crt scanline toggle.
 - visitor counter: retro counter in the corner tracking visits.
 
 ---

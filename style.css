@@ -5,49 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&family=VT323&display=swap');
 
-/* --- Root Variables & Default Theme: Cyber Dark --- */
-:root, [data-theme="cyber-dark"] {
-  --bg-desktop: #0a0c14;
-  --bg-desktop-pattern: radial-gradient(#1e2238 1px, transparent 1px);
-  --pattern-size: 20px 20px;
-  
-  --window-bg: #131722;
-  --window-border: #2a3148;
-  --window-header: linear-gradient(90deg, #1f273d, #2f1b4a);
-  --window-header-text: #e2e8f0;
-  --window-header-active: linear-gradient(90deg, #0052cc, #7928ca);
-  --text-main: #e2e8f0;
-  --text-muted: #8b9bb4;
-  
-  --accent-cyan: #00e5ff;
-  --accent-pink: #ff007f;
-  --accent-green: #38ef7d;
-  --accent-amber: #ffb800;
-  --accent-purple: #9d4edd;
-  
-  --taskbar-bg: #10131d;
-  --taskbar-border: #23293e;
-  --task-btn-bg: #181d2c;
-  --task-btn-active: #2b344e;
-  --task-btn-border: #3c4664;
-  
-  --btn-face: #1c2233;
-  --btn-light: #2c354e;
-  --btn-shadow: #0b0d14;
-  
-  --card-bg: #181d2c;
-  --card-border: #2a334d;
-  --input-bg: #0c0e17;
-  --input-border: #2e3752;
-  --code-bg: #080a10;
-  
-  --font-pixel: 'Press Start 2P', monospace;
-  --font-terminal: 'VT323', monospace;
-  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* --- Theme: Windows 95 Nostalgia --- */
-[data-theme="win95"] {
+/* --- Root Variables & Default Theme: Windows 95 --- */
+:root, [data-theme="win95"] {
   --bg-desktop: #008080;
   --bg-desktop-pattern: none;
   --pattern-size: auto;
@@ -58,7 +17,7 @@
   --window-header-text: #ffffff;
   --window-header-active: linear-gradient(90deg, #000080, #1084d0);
   --text-main: #000000;
-  --text-muted: #444444;
+  --text-muted: #333333;
   
   --accent-cyan: #000080;
   --accent-pink: #800000;
@@ -81,43 +40,10 @@
   --input-bg: #ffffff;
   --input-border: #808080;
   --code-bg: #ffffff;
-}
-
-/* --- Theme: Amber CRT Terminal --- */
-[data-theme="amber-crt"] {
-  --bg-desktop: #120b00;
-  --bg-desktop-pattern: repeating-linear-gradient(0deg, #1b1000 0px, #120b00 2px, #0a0600 4px);
-  --pattern-size: auto;
   
-  --window-bg: #1c1100;
-  --window-border: #ffb000;
-  --window-header: #382100;
-  --window-header-text: #ffb000;
-  --window-header-active: #593500;
-  --text-main: #ffb000;
-  --text-muted: #c28500;
-  
-  --accent-cyan: #ffc44d;
-  --accent-pink: #ff8400;
-  --accent-green: #ffb000;
-  --accent-amber: #ffd700;
-  --accent-purple: #e67300;
-  
-  --taskbar-bg: #120b00;
-  --taskbar-border: #ffb000;
-  --task-btn-bg: #291800;
-  --task-btn-active: #4a2c00;
-  --task-btn-border: #ffb000;
-  
-  --btn-face: #291800;
-  --btn-light: #ffb000;
-  --btn-shadow: #000000;
-  
-  --card-bg: #120b00;
-  --card-border: #734c00;
-  --input-bg: #0d0800;
-  --input-border: #ffb000;
-  --code-bg: #0d0800;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-terminal: 'VT323', monospace;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* --- Theme: GameBoy Pea-Soup Mint --- */
@@ -1437,4 +1363,229 @@ html, body {
   .arcade-scoreboard {
     width: 100%;
   }
+}
+
+/* --- Dedicated Layout & Window Classes (Zero Inline Styles) --- */
+.shelf-ver {
+  color: var(--accent-pink);
+}
+
+.visitor-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.win-about {
+  top: 36px;
+  left: 130px;
+  width: 560px;
+}
+
+.bio-p-spaced {
+  margin-top: 8px;
+}
+
+.btn-group-about {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.win-projects {
+  top: 50px;
+  left: 180px;
+  width: 620px;
+}
+
+.projects-intro {
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.win-now {
+  top: 60px;
+  left: 220px;
+  width: 500px;
+}
+
+.win-guestbook {
+  top: 70px;
+  left: 160px;
+  width: 660px;
+}
+
+.guest-form-heading {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--accent-pink);
+}
+
+.guest-form-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.btn-stamp {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.guest-status-text {
+  font-family: var(--font-terminal);
+  font-size: 14px;
+  color: var(--accent-green);
+}
+
+.guest-feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.guestbook-count-text {
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  color: var(--accent-cyan);
+}
+
+.btn-guest-reset {
+  font-size: 7px;
+  padding: 3px 6px;
+}
+
+.win-shelf {
+  top: 80px;
+  left: 240px;
+  width: 540px;
+}
+
+.spotlight-label {
+  font-family: var(--font-pixel);
+  font-size: 8.5px;
+  color: var(--accent-cyan);
+}
+
+.spotlight-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.btn-copy-action {
+  align-self: flex-start;
+}
+
+.shelf-subheading {
+  font-family: var(--font-pixel);
+  font-size: 8.5px;
+  color: var(--accent-pink);
+  margin-bottom: 8px;
+}
+
+.win-music {
+  top: 90px;
+  left: 190px;
+  width: 440px;
+}
+
+.synth-title {
+  font-family: var(--font-pixel);
+  font-size: 8.5px;
+  color: var(--accent-green);
+}
+
+.synth-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.track-select-input {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+}
+
+.win-pet {
+  top: 100px;
+  left: 260px;
+  width: 380px;
+}
+
+.pet-btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.win-arcade {
+  top: 40px;
+  left: 140px;
+  width: 380px;
+}
+
+.btn-arcade-start {
+  margin-top: 4px;
+}
+
+.win-terminal {
+  top: 75px;
+  left: 200px;
+  width: 560px;
+}
+
+.win-secret {
+  top: 110px;
+  left: 200px;
+  width: 440px;
+}
+
+.secret-titlebar {
+  background: linear-gradient(90deg, #ff007f, #ffd700);
+}
+
+.secret-title-text {
+  color: #fff;
+}
+
+.secret-body {
+  text-align: center;
+}
+
+.secret-crown {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.secret-heading {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--accent-amber);
+  margin-bottom: 8px;
+}
+
+.secret-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.secret-code-hl {
+  color: var(--accent-cyan);
+  font-family: monospace;
+}
+
+.secret-sub {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--accent-green);
+}
+
+.start-icon {
+  font-size: 14px;
+}
+
+.theme-select-input {
+  font-size: 11px;
+  padding: 2px 4px;
+  height: 26px;
 }

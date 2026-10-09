@@ -1403,7 +1403,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Themes
-  const currentTheme = localStorage.getItem('q04ti_theme') || 'cyber-dark';
+  let currentTheme = localStorage.getItem('q04ti_theme') || 'win95';
+  if (currentTheme === 'cyber-dark' || currentTheme === 'amber-crt') {
+    currentTheme = 'win95';
+  }
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   const themeSelect = document.getElementById('theme-picker');
