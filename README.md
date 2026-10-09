@@ -44,7 +44,7 @@ no audio files were used at all. it is just pure javascript generating square wa
 
 ---
 
-## secrets & easter eggs
+## secrets 
 
 1. gamer code: try typing the classic konami code on your keyboard anywhere on the page (up up down down left right left right b a).
 2. terminal: open Terminal.sh and type `cat secret.txt` or `matrix`.
