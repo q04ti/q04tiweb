@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyber-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>q04ti's Cyber Nook | Personal Web & OS</title>
+  
+  <meta name="description" content="Welcome to q04ti's corner of the handmade web. Retro desktop environment, creative projects, /now page, chiptune synth, guestbook, and indie web nostalgia.">
+  <meta name="author" content="q04ti">
+  <meta property="og:title" content="q04ti's Cyber Nook">
+  <meta property="og:description" content="A handcrafted personal website & retro desktop OS. Built with zero frameworks, lots of caffeine, and love for the indie web.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- CRT Scanlines / Glitch Overlay -->
+  <div id="crt-overlay" class="scanlines-active"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="hidden"></div>
+
+  <!-- Main Desktop Space -->
+  <main id="desktop-area">
+
+    <!-- Desktop Icons Grid -->
+    <div class="desktop-icons-grid">
+      <div class="desktop-icon selected" data-window="win-about" tabindex="0">
+        <div class="icon-graphic">📁</div>
+        <div class="icon-label">About_Me.txt</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-projects" tabindex="0">
+        <div class="icon-graphic">🚀</div>
+        <div class="icon-label">Projects/</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-now" tabindex="0">
+        <div class="icon-graphic">🕒</div>
+        <div class="icon-label">Now.log</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-guestbook" tabindex="0">
+        <div class="icon-graphic">📝</div>
+        <div class="icon-label">Guestbook.exe</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-shelf" tabindex="0">
+        <div class="icon-graphic">🗃️</div>
+        <div class="icon-label">88x31_Shelf</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-music" tabindex="0">
+        <div class="icon-graphic">🎵</div>
+        <div class="icon-label">LoFi_Synth.exe</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-pet" tabindex="0">
+        <div class="icon-graphic">🐾</div>
+        <div class="icon-label">CyberCat.pet</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-arcade" tabindex="0">
+        <div class="icon-graphic">🕹️</div>
+        <div class="icon-label">Arcade_Mini</div>
+      </div>
+
+      <div class="desktop-icon" data-window="win-terminal" tabindex="0">
+        <div class="icon-graphic">💻</div>
+        <div class="icon-label">Terminal.sh</div>
+      </div>
+    </div>
+
+    <!-- Desktop Top-Right Status & GeoCities Counter Widget -->
+    <aside class="desktop-sticker-shelf">
+      <div class="shelf-title">
+        <span>q04ti NetStation</span>
+        <span style="color: var(--accent-pink);">v2.4</span>
+      </div>
+
+      <div class="visitor-badge">
+        <span style="font-size: 11px; color: var(--text-muted);">VISITORS:</span>
+        <div id="visitor-count-digits" class="visitor-count">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="status-ticker">
+        <span class="status-dot"></span>
+        <span>Online &amp; tinkering</span>
+      </div>
+    </aside>
+
+    <!-- ========================================================
+         WINDOWS
+         ======================================================== -->
+
+    <!-- 1. About Me Window (Open by default) -->
+    <article id="win-about" class="os-window active-window" data-icon="📁" style="top: 36px; left: 130px; width: 560px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">📁</span>
+          <span class="window-title">About_Me.txt - Notepad</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize" title="Minimize">_</button>
+          <button class="window-btn btn-maximize" title="Maximize">□</button>
+          <button class="window-btn btn-close" title="Close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="profile-hero">
+          <div class="avatar-pixel-frame">
+            <div class="avatar-inner">👾</div>
+          </div>
+          <div class="profile-meta">
+            <h2>q04ti (Shuaib)</h2>
+            <p class="profile-tagline">Crafting weird, joyful, and tactile things on the personal web.</p>
+            <div class="badge-row">
+              <span class="spec-badge">⚡ Builder</span>
+              <span class="spec-badge">☕ Caffeine: 94%</span>
+              <span class="spec-badge">🎹 Web Audio</span>
+              <span class="spec-badge">🌐 Indie Web</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bio-section">
+          <h3><span>⚡</span> WHO AM I?</h3>
+          <p>
+            Hey traveler! Welcome to my personal corner of the internet. I'm a developer and digital tinkerer who fell in love with computers back when software had texture, floppy drives clicked, and personal homepages were full of wonder and surprise.
+          </p>
+          <p style="margin-top: 8px;">
+            I believe the modern web became a bit too sterile with corporate design systems and interchangeable templates. This site is built 100% by hand using pure HTML, CSS, and vanilla JavaScript—zero bloated frameworks, zero trackers, just pure creative code and Web Audio synthesizers!
+          </p>
+        </div>
+
+        <div class="bio-section">
+          <h3><span>🛠️</span> WEAPONS OF CHOICE</h3>
+          <p>
+            JavaScript (ESNext), TypeScript, Python, HTML5 Canvas, Web Audio API, Linux, and clicky mechanical keyboards.
+          </p>
+        </div>
+
+        <div class="bio-section">
+          <h3><span>✨</span> A FEW QUIRKS</h3>
+          <ul class="quirks-list">
+            <li>Still believes 88x31 buttons are the pinnacle of web graphic design.</li>
+            <li>Listens to ambient synthwave and 8-bit chiptunes while debugging late into the night.</li>
+            <li>Prefers offline-first tools that don't need a monthly subscription to save a text note.</li>
+            <li>Hidden easter egg on this site: Try the legendary Konami Code on your keyboard!</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 16px; display: flex; gap: 8px;">
+          <button class="btn-retro" onclick="window.windowManager.openWindow('win-projects')">🚀 View Projects</button>
+          <button class="btn-retro" onclick="window.windowManager.openWindow('win-guestbook')">📝 Sign Guestbook</button>
+        </div>
+      </section>
+    </article>
+
+    <!-- 2. Projects Window -->
+    <article id="win-projects" class="os-window hidden" data-icon="🚀" style="top: 50px; left: 180px; width: 620px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🚀</span>
+          <span class="window-title">Projects/ - File Explorer</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <p style="margin-bottom: 14px; font-size: 13px; color: var(--text-muted);">
+          Selected experiments, tools, and creations built for curiosity, utility, and joy:
+        </p>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <span class="project-badge">SYSTEM</span>
+            <h3 class="project-title">🖥️ q04tiOS</h3>
+            <p class="project-desc">
+              The very retro web desktop OS you are running right now! Features draggable window architecture, procedural Web Audio chiptune synth, persistent guestbook, and interactive easter eggs.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Vanilla JS</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">Web Audio</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/q04ti/q04tiweb" target="_blank" class="btn-retro">Source ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <span class="project-badge">AUDIO</span>
+            <h3 class="project-title">🎹 PocketSynth</h3>
+            <p class="project-desc">
+              A lightweight 4-track browser chiptune synthesizer and step sequencer that generates retro game audio in real time with zero external audio samples.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Web Audio API</span>
+              <span class="project-tag">Canvas</span>
+              <span class="project-tag">Synthesizer</span>
+            </div>
+            <div class="project-links">
+              <button class="btn-retro" onclick="window.windowManager.openWindow('win-music')">Launch Player ↗</button>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <span class="project-badge">TOOL</span>
+            <h3 class="project-title">📓 TerminalNotes</h3>
+            <p class="project-desc">
+              A distraction-free, local-first scratchpad for midnight thoughts. Instant load time, markdown formatting, and localStorage auto-backup.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Local-First</span>
+              <span class="project-tag">Markdown</span>
+              <span class="project-tag">Productivity</span>
+            </div>
+            <div class="project-links">
+              <button class="btn-retro" onclick="window.windowManager.openWindow('win-terminal')">Open CLI ↗</button>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <span class="project-badge">SIMULATION</span>
+            <h3 class="project-title">🌱 PixelGarden</h3>
+            <p class="project-desc">
+              A procedural digital terrarium simulator driven by cellular automata rules. Watch virtual moss, vines, and cyber bugs flourish in real-time.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Cellular Automata</span>
+              <span class="project-tag">Procedural</span>
+              <span class="project-tag">Pixel Art</span>
+            </div>
+            <div class="project-links">
+              <button class="btn-retro" onclick="window.windowManager.openWindow('win-arcade')">Try Mini Game ↗</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- 3. /now Window -->
+    <article id="win-now" class="os-window hidden" data-icon="🕒" style="top: 60px; left: 220px; width: 500px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🕒</span>
+          <span class="window-title">Now.log - Current Status</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="now-header">
+          <span class="now-header-title">📍 WHAT I'M UP TO RIGHT NOW</span>
+          <span class="now-updated">October 2026</span>
+        </div>
+
+        <div class="now-items">
+          <div class="now-block">
+            <h4>🛠️ CURRENTLY BUILDING</h4>
+            <p>Polishing this personal website into the coziest retro cyber nook possible, experimenting with procedural audio synthesis and retro webrings.</p>
+          </div>
+
+          <div class="now-block">
+            <h4>📖 READING</h4>
+            <p>Essays on the Indie Web movement, vintage computing architecture, and classic cyberpunk sci-fi paperbacks.</p>
+          </div>
+
+          <div class="now-block">
+            <h4>🎧 CURRENT SOUNDTRACK</h4>
+            <p>Japanese City Pop from the 80s, ambient lo-fi beat tapes, and synthwave arpeggios that feel like driving through neon rain.</p>
+          </div>
+
+          <div class="now-block">
+            <h4>☕ OBSESSION OF THE MONTH</h4>
+            <p>Single-origin Ethiopian coffee beans brewed with an Aeropress, and mechanical keyboard switch modding.</p>
+          </div>
+        </div>
+
+        <div class="now-cite">
+          Inspired by Derek Sivers' <a href="https://nownownow.com/about" target="_blank" rel="noopener">/now page movement</a>. Much easier to keep honest and fresh than a dusty blog!
+        </div>
+      </section>
+    </article>
+
+    <!-- 4. Guestbook Window -->
+    <article id="win-guestbook" class="os-window hidden" data-icon="📝" style="top: 70px; left: 160px; width: 660px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">📝</span>
+          <span class="window-title">Guestbook.exe - Leave a Note!</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="guestbook-layout">
+          <!-- Form Pane -->
+          <div class="guestbook-form-pane">
+            <h4 style="font-family: var(--font-pixel); font-size: 9px; color: var(--accent-pink);">SIGN THE GUESTBOOK</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">
+              Leave a friendly note for q04ti! Stored locally and instantly pinned to the board.
+            </p>
+
+            <form id="guestbook-form">
+              <div class="form-group">
+                <label for="guest-name">YOUR HANDLE / ALIAS:</label>
+                <input type="text" id="guest-name" class="form-input" placeholder="e.g. cyber_traveler" required maxlength="25">
+              </div>
+
+              <div class="form-group">
+                <label for="guest-site">YOUR WEBSITE OR HANDLE (OPTIONAL):</label>
+                <input type="text" id="guest-site" class="form-input" placeholder="e.g. yourname.neocities.org" maxlength="50">
+              </div>
+
+              <div class="form-group">
+                <label>PICK A STAMP STICKER:</label>
+                <div id="sticker-picker" class="sticker-picker-row">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="guest-msg">YOUR MESSAGE:</label>
+                <textarea id="guest-msg" class="form-input" rows="3" placeholder="Say hi, drop a thought, or tell me your favorite retro game..." required maxlength="200"></textarea>
+              </div>
+
+              <button type="submit" class="btn-retro" style="align-self: flex-start; margin-top: 4px;">
+                📌 Stamp Note!
+              </button>
+              <div id="guest-status" style="font-family: var(--font-terminal); font-size: 14px; color: var(--accent-green);"></div>
+            </form>
+          </div>
+
+          <!-- Feed Pane -->
+          <div class="guestbook-feed-pane">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span id="guestbook-count" style="font-family: var(--font-terminal); font-size: 15px; color: var(--accent-cyan);">3 notes</span>
+              <button id="guestbook-reset" class="btn-retro" style="font-size: 7px; padding: 3px 6px;">Reset</button>
+            </div>
+            <div id="guestbook-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- 5. 88x31 Button Shelf Window -->
+    <article id="win-shelf" class="os-window hidden" data-icon="🗃️" style="top: 80px; left: 240px; width: 540px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🗃️</span>
+          <span class="window-title">88x31_Shelf.html - Pixel Badges</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <p class="button-shelf-desc">
+          Back in the golden age of the web, personal sites traded 88x31 pixel buttons like digital trading cards. Here is mine for you to take, plus some classics!
+        </p>
+
+        <!-- q04ti's Button Spotlight -->
+        <div class="my-button-spotlight">
+          <div class="spotlight-top">
+            <strong style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-cyan);">MY 88x31 BUTTON:</strong>
+            <img src="assets/q04ti-badge.svg" alt="q04ti web badge" class="pixel-btn-preview" width="88" height="31" />
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Link to my site from yours! Click below to copy the ready-to-paste embed HTML:
+          </p>
+          <button id="btn-copy-88x31" class="btn-retro" style="align-self: flex-start;">
+            📋 Copy Button Embed HTML
+          </button>
+        </div>
+
+        <!-- Web Collection -->
+        <h4 style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-pink); margin-bottom: 8px;">
+          COLLECTED BUTTONS &amp; WEBRINGS
+        </h4>
+        <div class="buttons-collection">
+          <span class="badge-8831 badge-q04ti" title="q04ti.web">q04ti.web</span>
+          <span class="badge-8831 badge-html5" title="Valid HTML5">HTML5<br>VALID</span>
+          <span class="badge-8831 badge-netscape" title="Best with Netscape">NETSCAPE<br>NOW!</span>
+          <span class="badge-8831 badge-notepad" title="Made with Notepad">NOTEPAD<br>MADE</span>
+          <span class="badge-8831 badge-caffeine" title="Powered by Caffeine">CAFFEINE<br>POWERED</span>
+          <span class="badge-8831 badge-crt" title="CRT Recommended">CRT<br>DISPLAY</span>
+          <span class="badge-8831 badge-neocities" title="Neocities Web">NEOCITIES<br>SURFER</span>
+          <span class="badge-8831 badge-webring" title="Indie Webring">INDIE<br>WEBRING</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- 6. Lo-Fi Synthesizer Window -->
+    <article id="win-music" class="os-window hidden" data-icon="🎵" style="top: 90px; left: 190px; width: 440px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🎵</span>
+          <span class="window-title">LoFi_Synth.exe - Procedural Audio</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="music-box">
+          <div style="font-family: var(--font-pixel); font-size: 8.5px; color: var(--accent-green);">
+            CHIPTUNE AUDIO ENGINE
+          </div>
+
+          <!-- Animated Audio Visualizer -->
+          <div class="visualizer-screen">
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+            <div class="vis-bar"></div>
+          </div>
+
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Procedural synth generated live with Web Audio API oscillators. Zero audio file downloads required!
+          </p>
+
+          <div class="music-controls">
+            <select id="music-track-select" class="form-input" style="font-family: var(--font-pixel); font-size: 8px;">
+              <option value="0">Track 1: Midnight Coffee</option>
+              <option value="1">Track 2: Neon Dreamer</option>
+              <option value="2">Track 3: 8-Bit Breeze</option>
+            </select>
+
+            <button id="music-play-btn" class="btn-retro">▶ Play Synth</button>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- 7. CyberCat Companion Window -->
+    <article id="win-pet" class="os-window hidden" data-icon="🐾" style="top: 100px; left: 260px; width: 380px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🐾</span>
+          <span class="window-title">CyberCat.pet - Mochi</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="pet-box">
+          <div id="pet-container" class="pet-screen">
+            <div id="pet-avatar">
+              <pre id="pet-sprite" class="pet-ascii">
+  /\_/\  
+ ( o.o ) 
+  > ^ <  ~*
+              </pre>
+            </div>
+          </div>
+
+          <div class="pet-info-row">
+            <span id="pet-mood">Mood: vibing</span>
+            <span id="pet-count">Petted: 0 times</span>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 4px;">
+            <button id="btn-pet" class="btn-retro">💖 Pet Mochi</button>
+            <button id="btn-feed" class="btn-retro">🐟 Feed Fish</button>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- 8. Arcade Window -->
+    <article id="win-arcade" class="os-window hidden" data-icon="🕹️" style="top: 40px; left: 140px; width: 380px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">🕹️</span>
+          <span class="window-title">Arcade_Mini - Brick Breaker</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body">
+        <div class="arcade-container">
+          <div class="arcade-scoreboard">
+            <span id="arcade-score">Score: 0</span>
+            <span id="arcade-high">High: 0</span>
+            <span id="arcade-lives">Lives: 💖💖💖</span>
+          </div>
+
+          <canvas id="arcade-canvas" width="320" height="280"></canvas>
+
+          <button id="btn-arcade-start" class="btn-retro" style="margin-top: 4px;">Start Game</button>
+        </div>
+      </section>
+    </article>
+
+    <!-- 9. Interactive Terminal Window -->
+    <article id="win-terminal" class="os-window hidden" data-icon="💻" style="top: 75px; left: 200px; width: 560px;">
+      <header class="window-titlebar">
+        <div class="titlebar-left">
+          <span class="window-icon">💻</span>
+          <span class="window-title">Terminal.sh - bash</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-minimize">_</button>
+          <button class="window-btn btn-maximize">□</button>
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section id="terminal-body" class="window-body">
+        <div id="terminal-output" class="terminal-scroll">
+          <!-- Terminal output lines inserted here -->
+        </div>
+        <div class="terminal-input-row">
+          <span class="term-input-prompt">guest@q04ti:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus />
+        </div>
+      </section>
+    </article>
+
+    <!-- 10. Konami Secret Unlocked Window -->
+    <article id="win-secret" class="os-window hidden" data-icon="🌟" style="top: 110px; left: 200px; width: 440px;">
+      <header class="window-titlebar" style="background: linear-gradient(90deg, #ff007f, #ffd700);">
+        <div class="titlebar-left">
+          <span class="window-icon">🌟</span>
+          <span class="window-title" style="color: #fff;">SECRET UNLOCKED!</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn btn-close">✕</button>
+        </div>
+      </header>
+
+      <section class="window-body" style="text-align: center;">
+        <div style="font-size: 40px; margin-bottom: 8px;">👑</div>
+        <h3 style="font-family: var(--font-pixel); font-size: 11px; color: var(--accent-amber); margin-bottom: 8px;">
+          CONGRATULATIONS, EXPLORER!
+        </h3>
+        <p style="font-size: 13px; line-height: 1.5; color: var(--text-main);">
+          You unlocked the hidden developer easter egg with the legendary Konami code:
+          <br>
+          <code style="color: var(--accent-cyan); font-family: monospace;">↑ ↑ ↓ ↓ ← → ← → B A</code>
+        </p>
+        <p style="margin-top: 10px; font-size: 12px; color: var(--accent-green);">
+          ★ Granted 30 Extra Lives in the Retro Web! ★
+        </p>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- Start Menu Popup -->
+  <nav id="start-menu" class="hidden">
+    <div class="start-sidebar">
+      <div class="start-sidebar-text">q04tiOS</div>
+    </div>
+    <div class="start-items-list">
+      <div class="start-menu-item" data-window="win-about">
+        <span>📁</span> <span>About Me</span>
+      </div>
+      <div class="start-menu-item" data-window="win-projects">
+        <span>🚀</span> <span>Projects</span>
+      </div>
+      <div class="start-menu-item" data-window="win-now">
+        <span>🕒</span> <span>/now page</span>
+      </div>
+      <div class="start-menu-item" data-window="win-guestbook">
+        <span>📝</span> <span>Guestbook</span>
+      </div>
+      <div class="start-menu-item" data-window="win-shelf">
+        <span>🗃️</span> <span>88x31 Shelf</span>
+      </div>
+      <div class="start-menu-item" data-window="win-music">
+        <span>🎵</span> <span>Lo-Fi Synth</span>
+      </div>
+      <div class="start-menu-item" data-window="win-pet">
+        <span>🐾</span> <span>CyberCat</span>
+      </div>
+      <div class="start-menu-item" data-window="win-arcade">
+        <span>🕹️</span> <span>Arcade Game</span>
+      </div>
+      <div class="start-menu-item" data-window="win-terminal">
+        <span>💻</span> <span>Terminal CLI</span>
+      </div>
+
+      <div class="start-menu-divider"></div>
+
+      <div class="start-menu-item" onclick="alert('System status: 100% operational. Running on pure vibes!')">
+        <span>⚡</span> <span>System Diagnostics</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bottom Taskbar -->
+  <footer id="taskbar">
+    <button id="start-btn" class="start-btn">
+      <span style="font-size: 14px;">👾</span>
+      <span>q04ti</span>
+    </button>
+
+    <!-- Running tasks list -->
+    <div id="taskbar-tasks" class="taskbar-tasks"></div>
+
+    <!-- System Tray -->
+    <div class="taskbar-tray">
+      <!-- Theme Switcher -->
+      <select id="theme-picker" class="form-input" style="font-size: 11px; padding: 2px 4px; height: 26px;" title="Select Desktop Theme">
+        <option value="cyber-dark">Cyber Dark</option>
+        <option value="win95">Windows 95</option>
+        <option value="amber-crt">Amber CRT</option>
+        <option value="gameboy">GameBoy Mint</option>
+        <option value="vaporwave">Vaporwave</option>
+      </select>
+
+      <!-- CRT Overlay toggle -->
+      <button id="crt-toggle-btn" class="tray-btn active" title="Toggle CRT Scanlines">📺</button>
+
+      <!-- Audio Mute / Unmute -->
+      <button id="mute-toggle-btn" class="tray-btn" title="Toggle Audio Sound">🔊</button>
+
+      <!-- Real-time Clock -->
+      <div id="taskbar-clock" class="taskbar-clock">12:00</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/windows.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/pet.js"></script>
+  <script src="js/arcade.js"></script>
+  <script src="js/guestbook.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

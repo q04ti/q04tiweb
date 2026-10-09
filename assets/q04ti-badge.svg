@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#172a45"/>
+      <stop offset="100%" stop-color="#020c1b"/>
+    </linearGradient>
+  </defs>
+  <!-- 3D Bevel Border -->
+  <rect x="0" y="0" width="88" height="31" fill="#fff" />
+  <rect x="1" y="1" width="86" height="29" fill="#000" />
+  <rect x="2" y="2" width="84" height="27" fill="url(#bg)" />
+  
+  <!-- Grid Accent -->
+  <line x1="2" y1="16" x2="86" y2="16" stroke="rgba(0, 229, 255, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
+  
+  <!-- Pixel Icon / Star -->
+  <rect x="7" y="11" width="6" height="6" fill="#00e5ff" />
+  <rect x="9" y="9" width="2" height="10" fill="#00e5ff" />
+  <rect x="5" y="13" width="10" height="2" fill="#00e5ff" />
+  <rect x="9" y="13" width="2" height="2" fill="#fff" />
+  
+  <!-- Text Label -->
+  <text x="21" y="14" fill="#00e5ff" font-family="'Courier New', monospace" font-size="8.5" font-weight="900" letter-spacing="0.5">q04ti</text>
+  <text x="21" y="23" fill="#ff007f" font-family="'Courier New', monospace" font-size="7.5" font-weight="bold" letter-spacing="1">.WEB</text>
+  
+  <!-- Corner indicator -->
+  <rect x="76" y="5" width="6" height="2" fill="#38ef7d" />
+  <rect x="80" y="5" width="2" height="6" fill="#38ef7d" />
+</svg>
