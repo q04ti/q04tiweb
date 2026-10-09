@@ -1,8 +1,5 @@
-/**
- * q04tiOS - Audio Synthesizer Engine (Web Audio API)
- * Procedural retro sound effects and chiptune/lofi audio generator
- * No external audio files needed!
- */
+// web audio synth engine i cooked up
+// generates 8-bit tunes with pure math so no mp3s needed!
 
 class SoundEngine {
   constructor() {
@@ -111,7 +108,7 @@ class SoundEngine {
     if (!this.ctx) return;
 
     const now = this.ctx.currentTime;
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+    const notes = [523.25, 659.25, 783.99, 1046.50];
     notes.forEach((freq, i) => {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
@@ -155,7 +152,7 @@ class SoundEngine {
     osc.stop(now + 0.25);
   }
 
-  // Procedural 8-bit / Lo-Fi Chiptune Music Generator
+  // procedural tunes
   startMusic(trackIndex = 0) {
     this.init();
     if (this.muted || !this.ctx) return;
@@ -164,21 +161,17 @@ class SoundEngine {
     this.currentTrack = trackIndex;
     this.step = 0;
 
-    // Track patterns (Scales & Chords)
-    // 0: "Midnight Coffee" (Pentatonic minor chill)
-    // 1: "Neon Dreamer" (Lofi electro synth)
-    // 2: "Arcade Adventure" (Upbeat 8-bit)
     const tracks = [
       {
         name: "Midnight Coffee",
         bpm: 88,
-        bass: [110, 110, 130.81, 146.83, 110, 110, 98, 110], // A2, C3, D3, G2
+        bass: [110, 110, 130.81, 146.83, 110, 110, 98, 110],
         melody: [440, 0, 523.25, 587.33, 659.25, 587.33, 523.25, 0, 440, 523.25, 659.25, 0, 587.33, 523.25, 440, 392],
       },
       {
         name: "Neon Dreamer",
         bpm: 104,
-        bass: [130.81, 130.81, 164.81, 164.81, 174.61, 174.61, 146.83, 146.83], // C3, E3, F3, D3
+        bass: [130.81, 130.81, 164.81, 164.81, 174.61, 174.61, 146.83, 146.83],
         melody: [523.25, 659.25, 783.99, 659.25, 698.46, 880, 698.46, 587.33, 523.25, 783.99, 659.25, 523.25, 587.33, 659.25, 587.33, 0],
       },
       {
@@ -190,14 +183,14 @@ class SoundEngine {
     ];
 
     const current = tracks[this.currentTrack % tracks.length];
-    const stepDuration = (60 / current.bpm) / 2; // eighth notes
+    const stepDuration = (60 / current.bpm) / 2;
 
     const tick = () => {
       if (!this.isPlayingMusic || this.muted) return;
 
       const now = this.ctx.currentTime;
 
-      // Bass note
+      // bass line
       const bassFreq = current.bass[Math.floor(this.step / 2) % current.bass.length];
       if (this.step % 2 === 0 && bassFreq > 0) {
         const bassOsc = this.ctx.createOscillator();
@@ -215,7 +208,7 @@ class SoundEngine {
         bassOsc.stop(now + stepDuration * 1.5);
       }
 
-      // Melody note
+      // melody line
       const melFreq = current.melody[this.step % current.melody.length];
       if (melFreq > 0) {
         const melOsc = this.ctx.createOscillator();
@@ -233,13 +226,12 @@ class SoundEngine {
         melOsc.stop(now + stepDuration * 0.9);
       }
 
-      // Lo-fi soft hi-hat tick on off-beats
+      // crunchy noise tick for drum
       if (this.step % 2 === 1) {
         this.playNoiseTick(now);
       }
 
       this.step++;
-      // Notify UI visualizer if active
       if (window.onMusicStep) {
         window.onMusicStep(this.step % 16, melFreq > 0);
       }
@@ -251,7 +243,6 @@ class SoundEngine {
   }
 
   playNoiseTick(now) {
-    // Generate a quick lo-fi noise burst for hi-hat
     try {
       const bufferSize = this.ctx.sampleRate * 0.02;
       const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
@@ -276,9 +267,7 @@ class SoundEngine {
 
       whiteNoise.start(now);
       whiteNoise.stop(now + 0.02);
-    } catch (e) {
-      // ignore
-    }
+    } catch (e) {}
   }
 
   stopMusic() {

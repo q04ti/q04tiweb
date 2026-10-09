@@ -1,7 +1,5 @@
-/**
- * q04tiOS - Interactive Guestbook
- * LocalStorage persistent guestbook with stickers, avatar stamps, and nostalgic web flair!
- */
+// guestbook board saves locally in your browser
+// nobody can delete your notes here
 
 class Guestbook {
   constructor() {
@@ -17,7 +15,7 @@ class Guestbook {
         id: 1,
         author: 'neon_drifter',
         website: 'drifter.neocities.org',
-        message: 'Stumbled here from a webring! Loving the CRT vibes and the lo-fi beats. Signed your book!',
+        message: 'stumbled here from a random webring lol loving the 8-bit beats signed your book!',
         date: '2026-09-28',
         sticker: '💿',
         badgeColor: '#ff007f'
@@ -26,7 +24,7 @@ class Guestbook {
         id: 2,
         author: 'CassetteKid',
         website: 'tapeheads.zone',
-        message: 'Took an 88x31 button for my personal sidebar! Keep keeping the web fun & weird.',
+        message: 'stole your 88x31 button for my site no cap. keep the web weird bro',
         date: '2026-10-02',
         sticker: '☕',
         badgeColor: '#00e5ff'
@@ -35,7 +33,7 @@ class Guestbook {
         id: 3,
         author: 'PixelMina',
         website: 'mina.garden',
-        message: 'Pet your cyber cat 10 times in a row. Best desk companion ever.',
+        message: 'pet your cyber cat like 20 times in a row. best desk buddy ever fr',
         date: '2026-10-06',
         sticker: '🐱',
         badgeColor: '#7000ff'
@@ -79,7 +77,7 @@ class Guestbook {
       btn.type = 'button';
       btn.className = `sticker-opt ${this.selectedSticker === sticker ? 'active' : ''}`;
       btn.innerText = sticker;
-      btn.title = `Choose sticker ${sticker}`;
+      btn.title = `Sticker ${sticker}`;
       btn.addEventListener('click', () => {
         this.selectedSticker = sticker;
         if (window.sound) window.sound.playClick();
@@ -98,7 +96,7 @@ class Guestbook {
     list.innerHTML = '';
 
     if (entries.length === 0) {
-      list.innerHTML = '<div class="guestbook-empty">No notes yet. Be the first to leave your mark!</div>';
+      list.innerHTML = '<div class="guestbook-empty">empty board rn. drop a note!</div>';
       return;
     }
 
@@ -115,7 +113,7 @@ class Guestbook {
             <span class="card-sticker">${entry.sticker || '👾'}</span>
             <strong>${this.escapeHTML(entry.author)}</strong>
           </div>
-          <span class="card-date">${entry.date || 'Recent'}</span>
+          <span class="card-date">${entry.date || 'recent'}</span>
         </div>
         <div class="card-body">
           <p>${this.escapeHTML(entry.message)}</p>
@@ -141,12 +139,12 @@ class Guestbook {
       const websiteInput = document.getElementById('guest-site');
       const messageInput = document.getElementById('guest-msg');
 
-      const author = authorInput.value.trim() || 'Anonymous Traveler';
+      const author = authorInput.value.trim() || 'rando internet traveler';
       const website = websiteInput.value.trim();
       const message = messageInput.value.trim();
 
       if (!message) {
-        alert('Please write a quick note before stamping!');
+        alert('write something first bro lol');
         return;
       }
 
@@ -171,24 +169,20 @@ class Guestbook {
 
       if (window.sound) window.sound.playSecret();
 
-      // Clear inputs
       messageInput.value = '';
-
       this.renderEntries();
 
-      // Show stamp notification
       const statusMsg = document.getElementById('guest-status');
       if (statusMsg) {
-        statusMsg.innerText = '✨ Note pinned to the guestbook!';
+        statusMsg.innerText = '✨ pinned to the board!';
         setTimeout(() => { statusMsg.innerText = ''; }, 3500);
       }
     });
 
-    // Reset button
     const resetBtn = document.getElementById('guestbook-reset');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        if (confirm('Reset guestbook back to initial friendly entries?')) {
+        if (confirm('reset guestbook back to default notes?')) {
           localStorage.removeItem(this.storageKey);
           this.renderEntries();
         }

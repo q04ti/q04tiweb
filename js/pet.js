@@ -1,7 +1,5 @@
-/**
- * q04tiOS - CyberCat Desktop Companion
- * An interactive virtual pet with moods, petting physics, and feeding!
- */
+// my desk pet cat mochi
+// pet him or he gets sad
 
 class CyberPet {
   constructor() {
@@ -43,7 +41,6 @@ class CyberPet {
     this.updateDisplay();
     this.bindEvents();
 
-    // Random idle mood shift every 20 seconds
     setInterval(() => {
       if (this.currentMood !== 'eating') {
         const otherMoods = ['vibing', 'napping', 'curious'];

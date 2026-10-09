@@ -1,10 +1,7 @@
-/**
- * q04tiOS - Main Application Controller
- * Coordinates theme switching, audio controls, Konami code, visitor counter, and UI interactions.
- */
+// main app script wiring everything together
+// zero frameworks, just vibes
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Window Manager
   window.windowManager = new WindowManager();
   window.retroTerminal = new RetroTerminal();
   window.guestbook = new Guestbook();
@@ -22,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCRTOverlay();
 });
 
-// Desktop Icon Interactions
+// desktop icons click & double click
 function setupDesktopIcons() {
   const icons = document.querySelectorAll('.desktop-icon');
   icons.forEach((icon) => {
@@ -43,7 +40,6 @@ function setupDesktopIcons() {
       icons.forEach(i => i.classList.remove('selected'));
       icon.classList.add('selected');
 
-      // Double click or fast touch opens window
       if (now - lastClick < 350 || window.innerWidth < 768) {
         activate();
       }
@@ -51,7 +47,6 @@ function setupDesktopIcons() {
     });
   });
 
-  // Clicking empty desktop clears icon selection
   document.getElementById('desktop-area')?.addEventListener('click', (e) => {
     if (e.target.id === 'desktop-area') {
       document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
@@ -59,7 +54,7 @@ function setupDesktopIcons() {
   });
 }
 
-// Start Menu Interactions
+// start menu
 function setupStartMenu() {
   const startBtn = document.getElementById('start-btn');
   const startMenu = document.getElementById('start-menu');
@@ -85,7 +80,7 @@ function setupStartMenu() {
   }
 }
 
-// Themes & Styles
+// themes
 function setupThemes() {
   const currentTheme = localStorage.getItem('q04ti_theme') || 'cyber-dark';
   document.documentElement.setAttribute('data-theme', currentTheme);
@@ -102,7 +97,7 @@ function setupThemes() {
   }
 }
 
-// Live Taskbar Clock
+// taskbar clock
 function setupClock() {
   const clockEl = document.getElementById('taskbar-clock');
   const update = () => {
@@ -116,12 +111,11 @@ function setupClock() {
   setInterval(update, 1000);
 }
 
-// Visitor Counter (GeoCities retro odometer style)
+// visitor counter
 function setupVisitorCounter() {
   const counterEl = document.getElementById('visitor-count-digits');
   let count = parseInt(localStorage.getItem('q04ti_visitor_count') || '4218', 10);
 
-  // Increment only once per session
   if (!sessionStorage.getItem('q04ti_visited')) {
     count += 1;
     localStorage.setItem('q04ti_visitor_count', count);
@@ -134,18 +128,17 @@ function setupVisitorCounter() {
   }
 }
 
-// Web Audio Lo-Fi Player & Sound Toggle
+// sound controls
 function setupAudioUI() {
   const muteBtn = document.getElementById('mute-toggle-btn');
   const musicPlayBtn = document.getElementById('music-play-btn');
   const trackSelect = document.getElementById('music-track-select');
   const visualizerBars = document.querySelectorAll('.vis-bar');
 
-  // Sync mute state icon
   const updateMuteIcon = () => {
     if (muteBtn) {
       muteBtn.innerText = window.sound.muted ? '🔇' : '🔊';
-      muteBtn.title = window.sound.muted ? 'Unmute Audio' : 'Mute Audio';
+      muteBtn.title = window.sound.muted ? 'Unmute' : 'Mute';
     }
   };
   updateMuteIcon();
@@ -161,11 +154,11 @@ function setupAudioUI() {
     musicPlayBtn.addEventListener('click', () => {
       if (window.sound.isPlayingMusic) {
         window.sound.stopMusic();
-        musicPlayBtn.innerText = '▶ Play Synth';
+        musicPlayBtn.innerText = '▶ Play Tunes';
       } else {
         const trackIdx = parseInt(trackSelect?.value || '0', 10);
         window.sound.startMusic(trackIdx);
-        musicPlayBtn.innerText = '⏹ Stop Synth';
+        musicPlayBtn.innerText = '⏹ Stop Tunes';
       }
     });
   }
@@ -178,7 +171,6 @@ function setupAudioUI() {
     });
   }
 
-  // Audio Visualizer step hook
   window.onMusicStep = (step, hasNote) => {
     visualizerBars.forEach((bar, idx) => {
       if (hasNote && (step % 4 === idx % 4)) {
@@ -192,21 +184,20 @@ function setupAudioUI() {
 
   window.onMusicStop = () => {
     visualizerBars.forEach(bar => { bar.style.height = '4px'; });
-    if (musicPlayBtn) musicPlayBtn.innerText = '▶ Play Synth';
+    if (musicPlayBtn) musicPlayBtn.innerText = '▶ Play Tunes';
   };
 }
 
-// 88x31 Button One-Click Copy
+// 88x31 copy button
 function setup88x31Copy() {
   const copyBtn = document.getElementById('btn-copy-88x31');
-  const toast = document.getElementById('toast-notification');
 
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
-      const code = `<a href="https://q04ti.github.io/q04tiweb" target="_blank"><img src="https://q04ti.github.io/q04tiweb/assets/q04ti-badge.png" alt="q04ti" width="88" height="31" /></a>`;
+      const code = `<a href="https://q04ti.github.io/q04tiweb" target="_blank"><img src="https://q04ti.github.io/q04tiweb/assets/q04ti-badge.svg" alt="q04ti" width="88" height="31" /></a>`;
       navigator.clipboard.writeText(code).then(() => {
         if (window.sound) window.sound.playSecret();
-        showToast('📋 Copied 88x31 button HTML to clipboard!');
+        showToast('📋 copied button code! paste it on your site');
       }).catch(() => {
         showToast('HTML: ' + code);
       });
@@ -224,7 +215,7 @@ function showToast(msg) {
   }, 3500);
 }
 
-// CRT Scanlines Toggle
+// crt lines
 function setupCRTOverlay() {
   const crtToggle = document.getElementById('crt-toggle-btn');
   const crt = document.getElementById('crt-overlay');
@@ -243,7 +234,7 @@ function setupCRTOverlay() {
   }
 }
 
-// Konami Code Easter Egg
+// konami code
 function setupKonamiCode() {
   const code = [
     'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -269,15 +260,13 @@ function setupKonamiCode() {
 
 function triggerKonamiSecret() {
   if (window.sound) window.sound.playSecret();
-  showToast('🎉 KONAMI CODE UNLOCKED: 30 LIVES & HYPER DISCO MODE!');
+  showToast('🎉 KONAMI CODE UNLOCKED LMAO DISCO MODE ACTIVATED');
 
-  // Trigger Disco Effect
   document.body.classList.add('hyper-disco-mode');
   setTimeout(() => {
     document.body.classList.remove('hyper-disco-mode');
   }, 8000);
 
-  // Open secret window or badge
   if (window.windowManager) {
     window.windowManager.openWindow('win-secret');
   }

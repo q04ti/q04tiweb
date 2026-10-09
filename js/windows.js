@@ -1,7 +1,5 @@
-/**
- * q04tiOS - Window Manager
- * Handles draggable windows, z-indexing, minimization, maximization, and taskbar integration.
- */
+// window dragging and focus logic
+// written with pointer events so it works on mobile too
 
 class WindowManager {
   constructor() {
@@ -29,7 +27,6 @@ class WindowManager {
       });
     });
 
-    // Close any start menu if clicked outside
     document.addEventListener('pointerdown', (e) => {
       const startMenu = document.getElementById('start-menu');
       const startBtn = document.getElementById('start-btn');
@@ -51,7 +48,6 @@ class WindowManager {
     let initialTop = 0;
 
     titleBar.addEventListener('pointerdown', (e) => {
-      // Don't drag if clicked on buttons
       if (e.target.closest('.window-btn')) return;
 
       const id = winEl.id;
@@ -82,7 +78,6 @@ class WindowManager {
       let newLeft = initialLeft + deltaX;
       let newTop = initialTop + deltaY;
 
-      // Keep inside bounds
       const maxLeft = window.innerWidth - 60;
       const maxTop = window.innerHeight - 80;
       newLeft = Math.max(-100, Math.min(newLeft, maxLeft));
@@ -145,7 +140,6 @@ class WindowManager {
     this.focusWindow(id);
     this.updateTaskbar();
 
-    // On mobile, if opened, position nicely
     if (window.innerWidth < 640) {
       winData.element.style.top = '20px';
       winData.element.style.left = '10px';
@@ -187,7 +181,6 @@ class WindowManager {
     if (window.sound) window.sound.playClick();
 
     if (!winData.isMaximized) {
-      // Save prev position
       winData.prevRect = {
         top: winData.element.style.top,
         left: winData.element.style.left,

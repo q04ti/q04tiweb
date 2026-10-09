@@ -1,7 +1,5 @@
-/**
- * q04tiOS - Retro Arcade: Neon Brick Breaker
- * Smooth HTML5 Canvas mini-game with retro sounds and high score tracking!
- */
+// brick breaker mini game
+// simple canvas physics
 
 class RetroArcade {
   constructor() {
@@ -14,7 +12,6 @@ class RetroArcade {
     this.isRunning = false;
     this.animId = null;
 
-    // Game objects
     this.paddle = { x: 130, y: 260, width: 60, height: 10, speed: 6, dx: 0 };
     this.ball = { x: 160, y: 240, radius: 5, dx: 2.5, dy: -2.5, speed: 3.5 };
     this.bricks = [];
@@ -66,7 +63,6 @@ class RetroArcade {
       });
     }
 
-    // Keyboard controls
     window.addEventListener('keydown', (e) => {
       if (!this.isRunning) return;
       if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
@@ -82,7 +78,6 @@ class RetroArcade {
       }
     });
 
-    // Mouse / Touch movement on canvas
     const handleMove = (clientX) => {
       if (!this.isRunning) return;
       const rect = this.canvas.getBoundingClientRect();
@@ -128,18 +123,15 @@ class RetroArcade {
   }
 
   update() {
-    // Move paddle
     this.paddle.x += this.paddle.dx;
     if (this.paddle.x < 0) this.paddle.x = 0;
     if (this.paddle.x + this.paddle.width > this.canvas.width) {
       this.paddle.x = this.canvas.width - this.paddle.width;
     }
 
-    // Move ball
     this.ball.x += this.ball.dx;
     this.ball.y += this.ball.dy;
 
-    // Wall collision
     if (this.ball.x + this.ball.radius > this.canvas.width || this.ball.x - this.ball.radius < 0) {
       this.ball.dx = -this.ball.dx;
       if (window.sound) window.sound.playClick();
@@ -149,21 +141,18 @@ class RetroArcade {
       if (window.sound) window.sound.playClick();
     }
 
-    // Paddle collision
     if (
       this.ball.y + this.ball.radius >= this.paddle.y &&
       this.ball.y - this.ball.radius <= this.paddle.y + this.paddle.height &&
       this.ball.x >= this.paddle.x &&
       this.ball.x <= this.paddle.x + this.paddle.width
     ) {
-      // Angle based on hit location
       const hitSpot = (this.ball.x - (this.paddle.x + this.paddle.width / 2)) / (this.paddle.width / 2);
       this.ball.dx = hitSpot * 3.5;
       this.ball.dy = -Math.abs(this.ball.dy);
       if (window.sound) window.sound.playOpen();
     }
 
-    // Bottom loss
     if (this.ball.y + this.ball.radius > this.canvas.height) {
       this.lives--;
       this.updateScoreBoard();
@@ -177,7 +166,6 @@ class RetroArcade {
       }
     }
 
-    // Brick collision
     let remainingBricks = 0;
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
@@ -210,7 +198,6 @@ class RetroArcade {
       this.gameOver(true);
     }
 
-    // Update particles
     for (let i = this.particles.length - 1; i >= 0; i--) {
       const p = this.particles[i];
       p.x += p.dx;
@@ -239,7 +226,6 @@ class RetroArcade {
     this.ctx.fillStyle = '#0f111a';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Draw Bricks
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const b = this.bricks[r][c];
@@ -253,14 +239,12 @@ class RetroArcade {
       }
     }
 
-    // Draw Paddle
     this.ctx.fillStyle = '#00e5ff';
     this.ctx.shadowColor = '#00e5ff';
     this.ctx.shadowBlur = 6;
     this.ctx.fillRect(this.paddle.x, this.paddle.y, this.paddle.width, this.paddle.height);
     this.ctx.shadowBlur = 0;
 
-    // Draw Ball
     this.ctx.beginPath();
     this.ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
     this.ctx.fillStyle = '#ff007f';
@@ -270,7 +254,6 @@ class RetroArcade {
     this.ctx.closePath();
     this.ctx.shadowBlur = 0;
 
-    // Draw Particles
     this.particles.forEach(p => {
       this.ctx.fillStyle = p.color;
       this.ctx.globalAlpha = p.life;
@@ -290,7 +273,7 @@ class RetroArcade {
 
     this.ctx.fillStyle = '#38ef7d';
     this.ctx.font = '11px monospace';
-    this.ctx.fillText('Move: Mouse / Left-Right Keys', this.canvas.width / 2, 140);
+    this.ctx.fillText('Mouse or Arrow Keys to move', this.canvas.width / 2, 140);
     this.ctx.fillText('Click START to play!', this.canvas.width / 2, 170);
   }
 
@@ -303,7 +286,7 @@ class RetroArcade {
     this.ctx.fillStyle = won ? '#38ef7d' : '#ff007f';
     this.ctx.font = '16px monospace';
     this.ctx.textAlign = 'center';
-    this.ctx.fillText(won ? '★ VICTORY! ★' : 'GAME OVER', this.canvas.width / 2, 140);
+    this.ctx.fillText(won ? '★ YOU WON! ★' : 'GAME OVER LOL', this.canvas.width / 2, 140);
 
     this.ctx.fillStyle = '#fff';
     this.ctx.font = '11px monospace';
