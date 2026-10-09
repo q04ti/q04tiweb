@@ -39,7 +39,7 @@ double click or tap the desktop icons:
 
 ## the part im proudest of
 
-the procedural chiptune synth in `js/audio.js` and the draggable window manager in `js/windows.js`. 
+the procedural chiptune synth and the draggable window manager in `script.js`. 
 no audio files were used at all. it is just pure javascript generating square waves, basslines, and percussion ticks directly in the browser.
 
 ---
