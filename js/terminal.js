@@ -105,7 +105,7 @@ class RetroTerminal {
         this.printLine('• 🛠️ making: this website and goofy audio tools');
         this.printLine('• 📖 reading: manga chapters i forgot to catch up on');
         this.printLine('• 🎧 listening: 80s city pop & lofi game osts');
-        this.printLine('• ☕ fuel: iced coffee 24/7');
+        this.printLine('• 💻 vibe: tinkering with retro code');
         break;
 
       case 'projects':
